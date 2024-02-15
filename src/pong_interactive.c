@@ -2,6 +2,7 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 void print_field(int, int, int, int, int, int);
 int up_R(int);
@@ -22,7 +23,7 @@ int main() {
         print_field(x, y, racket_1, racket_2, score1, score2);
         while (1) {
             if (x == 1) {
-                if (fabs(racket_1 - y) <= 1) {
+                if (abs(racket_1 - y) <= 1) {
                     if (racket_1 == y) {
                         alfa = 1;
                     } else if ((racket_1 - 1) == y) {
@@ -40,7 +41,7 @@ int main() {
                     break;
                 }
             } else if (x == 78) {
-                if (fabs(racket_2 - y) <= 1) {
+                if (abs(racket_2 - y) <= 1) {
                     if (racket_2 == y) {
                         alfa = 4;
                     } else if ((racket_2 - 1) == y) {
@@ -129,9 +130,9 @@ void print_field(int ball_x, int ball_y, int roc_1_y, int roc_2_y, int score1, i
     }
     printw("\n");
     for (int o_y = 0; o_y < 25; o_y++) {
-        if (fabs(roc_1_y - o_y) <= 1) {
+        if (abs(roc_1_y - o_y) <= 1) {
             printw("%c", '#');
-            if (fabs(roc_2_y - o_y) <= 1) {
+            if (abs(roc_2_y - o_y) <= 1) {
                 if (o_y == ball_y) {
                     for (int o_x = 1; o_x < ball_x; o_x++) {
                         printw("%c", ' ');
@@ -161,7 +162,7 @@ void print_field(int ball_x, int ball_y, int roc_1_y, int roc_2_y, int score1, i
                 }
             }
         } else if (o_y == ball_y) {
-            if (fabs(roc_2_y - o_y) <= 1) {
+            if (abs(roc_2_y - o_y) <= 1) {
                 for (int o_x = 0; o_x < ball_x; o_x++) {
                     printw("%c", ' ');
                 }
@@ -179,7 +180,7 @@ void print_field(int ball_x, int ball_y, int roc_1_y, int roc_2_y, int score1, i
                     printw("%c", ' ');
                 }
             }
-        } else if (fabs(roc_2_y - o_y) <= 1) {
+        } else if (abs(roc_2_y - o_y) <= 1) {
             for (int o_x = 0; o_x < 79; o_x++) {
                 printw("%c", ' ');
             }
